@@ -211,6 +211,22 @@ export const VideoPlayer: React.FC = () => {
     }
   }, [currentTime, isPlaying, renderFrame]);
 
+  // Cleanup video elements on unmount
+  useEffect(() => {
+    return () => {
+      videoRefs.current.forEach((video) => {
+        video.pause();
+        video.removeAttribute('src');
+        video.load();
+      });
+      videoRefs.current.clear();
+
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, []);
+
   // Format time
   const formatTime = (seconds: number): string => {
     const mins = Math.floor(seconds / 60);

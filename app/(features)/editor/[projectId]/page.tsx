@@ -1,12 +1,36 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { useEditorStore } from '@/store/editorStore';
-import { VideoTimeline } from '@/components/Editor/Timeline/VideoTimeline';
-import { VideoPlayer } from '@/components/Editor/Player/VideoPlayer';
 import { Save, Home, Upload, Download } from 'lucide-react';
+
+// Lazy load heavy components
+const VideoTimeline = dynamic(
+  () => import('@/components/Editor/Timeline/VideoTimeline').then((mod) => ({ default: mod.VideoTimeline })),
+  {
+    loading: () => (
+      <div className="w-full h-full flex items-center justify-center bg-gray-800">
+        <div className="text-gray-400">Loading timeline...</div>
+      </div>
+    ),
+    ssr: false,
+  }
+);
+
+const VideoPlayer = dynamic(
+  () => import('@/components/Editor/Player/VideoPlayer').then((mod) => ({ default: mod.VideoPlayer })),
+  {
+    loading: () => (
+      <div className="w-full h-full flex items-center justify-center bg-gray-900">
+        <div className="text-gray-400">Loading player...</div>
+      </div>
+    ),
+    ssr: false,
+  }
+);
 
 export default function EditorProjectPage() {
   const params = useParams();
