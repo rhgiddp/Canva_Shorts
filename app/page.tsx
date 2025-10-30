@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50">
@@ -21,12 +23,12 @@ export default function Home() {
             <p className="text-gray-600 mb-6">
               Gemini 2.5 Flash로 AI 캐릭터 이미지를 생성하세요
             </p>
-            <a
+            <Link
               href="/image-generator"
               className="block w-full text-center bg-purple-500 text-white py-3 rounded-lg hover:bg-purple-600 transition-colors"
             >
               시작하기
-            </a>
+            </Link>
           </div>
 
           {/* Video Generator Card */}
@@ -38,12 +40,12 @@ export default function Home() {
             <p className="text-gray-600 mb-6">
               이미지를 움직이는 비디오로 변환하세요
             </p>
-            <a
+            <Link
               href="/video-generator"
               className="block w-full text-center bg-pink-500 text-white py-3 rounded-lg hover:bg-pink-600 transition-colors"
             >
               시작하기
-            </a>
+            </Link>
           </div>
 
           {/* Video Editor Card */}
@@ -55,12 +57,12 @@ export default function Home() {
             <p className="text-gray-600 mb-6">
               생성한 비디오를 편집하고 효과를 추가하세요
             </p>
-            <a
+            <Link
               href="/editor"
               className="block w-full text-center bg-indigo-500 text-white py-3 rounded-lg hover:bg-indigo-600 transition-colors"
             >
               시작하기
-            </a>
+            </Link>
           </div>
         </div>
       </main>

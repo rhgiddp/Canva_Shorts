@@ -9,7 +9,10 @@
       "Bash(npm uninstall:*)",
       "Bash(npm run dev:*)",
       "Bash(timeout:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(mkdir:*)",
+      "Bash(ls:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []
